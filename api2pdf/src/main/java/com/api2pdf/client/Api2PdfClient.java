@@ -9,7 +9,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Map;
 
-import com.api2pdf.models.Api2pdfResponse;
+import com.api2pdf.models.Api2PdfResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Api2PdfClient {
@@ -43,7 +43,7 @@ public class Api2PdfClient {
 
 	}
 
-	private Api2pdfResponse makeRequest(String payload, boolean inlinePdf, String fileName, HttpURLConnection con)
+	private Api2PdfResponse makeRequest(String payload, boolean inlinePdf, String fileName, HttpURLConnection con)
 			throws IOException {
 		// For POST only - START
 		con.setDoOutput(true);
@@ -67,11 +67,11 @@ public class Api2PdfClient {
 		in.close();
 		String jsonResponse = response.toString();
 		ObjectMapper objectMapper = new ObjectMapper();
-		Api2pdfResponse api2pdfResponse = objectMapper.readValue(jsonResponse, Api2pdfResponse.class);
+		Api2PdfResponse api2pdfResponse = objectMapper.readValue(jsonResponse, Api2PdfResponse.class);
 		return api2pdfResponse;
 	}
 
-	public Api2pdfResponse libreofficeConvert(String officeFileUrl, boolean inlinePdf, String fileName)
+	public Api2PdfResponse libreofficeConvert(String officeFileUrl, boolean inlinePdf, String fileName)
 			throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_LIBREOFFICE_CONVERT);
 		String payload = "{\"url\":\"" + officeFileUrl + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
@@ -79,7 +79,7 @@ public class Api2PdfClient {
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2pdfResponse merge(String[] firstPdfUrls, boolean inlinePdf, String fileName) throws IOException {
+	public Api2PdfResponse merge(String[] firstPdfUrls, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_MERGE);
 		StringBuilder urls = new StringBuilder();
 		for (String item : firstPdfUrls) {
@@ -90,27 +90,27 @@ public class Api2PdfClient {
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2pdfResponse wkhtmlToPdfFromHtml(String html, boolean inlinePdf, String fileName) throws IOException {
+	public Api2PdfResponse wkhtmlToPdfFromHtml(String html, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_WKHTMLTOPDF_HTML);
 		String payload = "{\"html\":\"" + html + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
 				+ "\"}";
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2pdfResponse wkhtmlToPdfFromUrl(String url, boolean inlinePdf, String fileName) throws IOException {
+	public Api2PdfResponse wkhtmlToPdfFromUrl(String url, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_WKHTMLTOPDF_URL);
 		String payload = "{\"url\":\"" + url + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName + "\"}";
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2pdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName) throws IOException {
+	public Api2PdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_HTML);
 		String payload = "{\"html\":\"" + html + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
 				+ "\"}";
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2pdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName,
+	public Api2PdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName,
 			Map<String, String> options) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_HTML);
 		StringBuilder optionsPayload = new StringBuilder();
@@ -123,13 +123,13 @@ public class Api2PdfClient {
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2pdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName) throws IOException {
+	public Api2PdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_URL);
 		String payload = "{\"url\":\"" + url + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName + "\"}";
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2pdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName,
+	public Api2PdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName,
 			Map<String, String> options) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_URL);
 		StringBuilder optionsPayload = new StringBuilder();

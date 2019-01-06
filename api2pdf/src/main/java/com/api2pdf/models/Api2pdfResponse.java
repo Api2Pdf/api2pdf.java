@@ -1,6 +1,6 @@
 package com.api2pdf.models;
 
-public class Api2pdfResponse {
+public class Api2PdfResponse {
 
 	 private String responseId;
 
