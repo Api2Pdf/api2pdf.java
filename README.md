@@ -95,7 +95,7 @@ Api2PdfResponse pdfResponse = a2pClient.wkhtmlToPdfFromUrl("https://www.github.c
 System.out.println(pdfResponse.getPdf());
 ```
     
-**Convert URL to PDF (use object for advanced wkhtmltopdf settings)**
+**Convert URL to PDF (use HashMap for advanced wkhtmltopdf settings)**
 [View full list of wkhtmltopdf options available.](https://www.api2pdf.com/documentation/advanced-options-wkhtmltopdf/)
 
 ```
@@ -117,7 +117,7 @@ Api2PdfResponse pdfResponse = a2pClient.headlessChromeFromHtml("<p>Hello World</
 System.out.println(pdfResponse.getPdf());
 ```
     
-**Convert HTML to PDF (use options for advanced Headless Chrome settings)**
+**Convert HTML to PDF (use HashMap for advanced Headless Chrome settings)**
 [View full list of Headless Chrome options available.](https://www.api2pdf.com/documentation/advanced-options-headless-chrome/)
 
 ```
@@ -134,7 +134,7 @@ Api2PdfResponse pdfResponse = a2pClient.headlessChromeFromUrl("https://www.githu
 System.out.println(pdfResponse.getPdf());
 ``` 
     
-**Convert URL to PDF (use keyword arguments for advanced Headless Chrome settings)**
+**Convert URL to PDF (use HashMap for advanced Headless Chrome settings)**
 [View full list of Headless Chrome options available.](https://www.api2pdf.com/documentation/advanced-options-headless-chrome/)
 
 ```
