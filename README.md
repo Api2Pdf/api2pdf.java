@@ -33,7 +33,7 @@ Create an account at [portal.api2pdf.com](https://portal.api2pdf.com/register) t
 
 ### Initialize the Client
 
-All usage starts by requiring api2pdf and creating a new object.
+All usage starts by importing the api2pdf library and creating a new object.
 
     package com.api2pdf.client;
     import com.api2pdf.models.Api2PdfResponse;
