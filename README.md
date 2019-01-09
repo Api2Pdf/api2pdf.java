@@ -12,7 +12,13 @@ Api2Pdf.com is a REST API for instantly generating PDF documents from HTML, URLs
 
 ## <a name="installation"></a>Installation
 
-    Coming soon
+The Java client library is available as a Maven Package and can be installed with Maven by including the following dependency in your pom.xml file.
+
+    <dependency>
+        <groupId>com.api2pdf.client</groupId>
+        <artifactId>api2pdf</artifactId>
+        <version>1.0.1</version>
+    </dependency>
 
 ## <a name="resources"></a>Resources
 
