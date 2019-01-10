@@ -1,3 +1,6 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.api2pdf.client/api2pdf/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.api2pdf.client/api2pdf)
+
 # api2pdf.java
 Java client for [Api2Pdf REST API](https://www.api2pdf.com/documentation) 
 
