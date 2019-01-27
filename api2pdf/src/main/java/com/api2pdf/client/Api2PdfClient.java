@@ -9,6 +9,9 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Map;
 
+import com.api2pdf.models.Api2PdfFromHtmlRequestModel;
+import com.api2pdf.models.Api2PdfFromUrlRequestModel;
+import com.api2pdf.models.Api2PdfMergeRequestModel;
 import com.api2pdf.models.Api2PdfResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -74,71 +77,117 @@ public class Api2PdfClient {
 	public Api2PdfResponse libreofficeConvert(String officeFileUrl, boolean inlinePdf, String fileName)
 			throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_LIBREOFFICE_CONVERT);
-		String payload = "{\"url\":\"" + officeFileUrl + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
-				+ "\"}";
+		Api2PdfFromUrlRequestModel model = new  Api2PdfFromUrlRequestModel();
+		model.setUrl(officeFileUrl);
+		model.setInlinePdf(inlinePdf);
+		model.setFileName(fileName);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
-	public Api2PdfResponse merge(String[] firstPdfUrls, boolean inlinePdf, String fileName) throws IOException {
+	public Api2PdfResponse merge(String[] pdfUrls, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_MERGE);
-		StringBuilder urls = new StringBuilder();
-		for (String item : firstPdfUrls) {
-			urls.append("\"" + item + "\", ");
-		}
-		urls.setLength(urls.length() - 2);
-		String payload = "{\"urls\":[ " + urls + "],\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName + "\"}";
+		Api2PdfMergeRequestModel model = new  Api2PdfMergeRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setUrls(pdfUrls);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
 	public Api2PdfResponse wkhtmlToPdfFromHtml(String html, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_WKHTMLTOPDF_HTML);
-		String payload = "{\"html\":\"" + html + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
-				+ "\"}";
+		Api2PdfFromHtmlRequestModel model = new  Api2PdfFromHtmlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setHtml(html);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
+	
+	public Api2PdfResponse wkhtmlToPdfFromHtml(String html, boolean inlinePdf, String fileName, Map<String, String> options) throws IOException  {
+		HttpURLConnection con = getConnection(API2PDF_WKHTMLTOPDF_HTML);
+		Api2PdfFromHtmlRequestModel model = new  Api2PdfFromHtmlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setHtml(html);
+		model.setOptions(options);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
+		return makeRequest(payload, inlinePdf, fileName, con);
+    }
 
 	public Api2PdfResponse wkhtmlToPdfFromUrl(String url, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_WKHTMLTOPDF_URL);
-		String payload = "{\"url\":\"" + url + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName + "\"}";
+		Api2PdfFromUrlRequestModel model = new  Api2PdfFromUrlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setUrl(url);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
+		return makeRequest(payload, inlinePdf, fileName, con);
+	}
+	
+	public Api2PdfResponse wkhtmlToPdfFromUrl(String url, boolean inlinePdf, String fileName, Map<String, String> options) throws IOException {
+		HttpURLConnection con = getConnection(API2PDF_WKHTMLTOPDF_URL);
+		Api2PdfFromUrlRequestModel model = new  Api2PdfFromUrlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setUrl(url);
+		model.setOptions(options);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
 	public Api2PdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_HTML);
-		String payload = "{\"html\":\"" + html + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
-				+ "\"}";
+		Api2PdfFromHtmlRequestModel model = new  Api2PdfFromHtmlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setHtml(html);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
 	public Api2PdfResponse headlessChromeFromHtml(String html, boolean inlinePdf, String fileName,
 			Map<String, String> options) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_HTML);
-		StringBuilder optionsPayload = new StringBuilder();
-		for (String key : options.keySet()) {
-			optionsPayload.append("\"" + key + "\":\"" + options.get(key).toString() + "\", ");
-		}
-		optionsPayload.setLength(optionsPayload.length() - 2);
-		String payload = "{\"html\":\"" + html + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
-				+ "\", \"options\":{ " + optionsPayload + "}}";
+		Api2PdfFromHtmlRequestModel model = new  Api2PdfFromHtmlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setHtml(html);
+		model.setOptions(options);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
 	public Api2PdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_URL);
-		String payload = "{\"url\":\"" + url + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName + "\"}";
+		Api2PdfFromUrlRequestModel model = new  Api2PdfFromUrlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setUrl(url);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
 	public Api2PdfResponse headlessChromeFromUrl(String url, boolean inlinePdf, String fileName,
 			Map<String, String> options) throws IOException {
 		HttpURLConnection con = getConnection(API2PDF_CHROME_URL);
-		StringBuilder optionsPayload = new StringBuilder();
-		for (String key : options.keySet()) {
-			optionsPayload.append("\"" + key + "\":\"" + options.get(key).toString() + "\", ");
-		}
-		optionsPayload.setLength(optionsPayload.length() - 2);
-		String payload = "{\"url\":\"" + url + "\",\"inlinePdf\":" + inlinePdf + ",\"fileName\":\"" + fileName
-				+ "\", \"options\":{ " + optionsPayload + "}}";
+		Api2PdfFromUrlRequestModel model = new  Api2PdfFromUrlRequestModel();
+		model.setFileName(fileName);
+		model.setInlinePdf(inlinePdf);
+		model.setUrl(url);
+		model.setOptions(options);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String payload = objectMapper.writeValueAsString(model);
 		return makeRequest(payload, inlinePdf, fileName, con);
 	}
 
