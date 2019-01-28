@@ -15,7 +15,7 @@ public class Api2PdfClientTest {
 	private static Api2PdfClient a2pClient;
 
 	@BeforeClass
-	public static void initCalculator() {
+	public static void initApi2PdfClient() {
 		a2pClient = new Api2PdfClient("YOUR-API-KEY");
 	}
 
