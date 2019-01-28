@@ -10,7 +10,7 @@
 		api2pdf
 	</artifactId>
 	<version>
-		1.0.1
+		1.0.2
 	</version>
 	<name>
 		api2pdf
@@ -67,26 +67,15 @@
 		</developer>
 	</developers>
 	<scm>
-		<url>
-			scm:git:file://D:/Working/Freelyncing/Open water/api2pdf/new java repo/.git
-		</url>
 		<connection>
-			scm:git:file://D:/Working/Freelyncing/Open water/api2pdf/new java repo/.git
+			scm:git:git://github.com/Api2Pdf/api2pdf.java.git
 		</connection>
 		<developerConnection>
-			scm:git:file://D:/Working/Freelyncing/Open water/api2pdf/new java repo/.git
-		</developerConnection>
-		<!--
-		<connection>
-		scm:git:git://github.com/Api2Pdf/api2pdf.java.git
-		</connection>
-		<developerConnection>
-		scm:git:ssh://github.com:Api2Pdf/api2pdf.java.git
+			scm:git:ssh://github.com:Api2Pdf/api2pdf.java.git
 		</developerConnection>
 		<url>
-		https://github.com/Api2Pdf/api2pdf.java
+			https://github.com/Api2Pdf/api2pdf.java
 		</url>
-		-->
 		<tag>
 			api2pdf-1.0.13
 		</tag>
