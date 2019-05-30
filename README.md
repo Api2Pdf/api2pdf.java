@@ -21,7 +21,7 @@ The Java client library is available as a Maven Package and can be installed wit
         <dependency>
             <groupId>com.api2pdf.client</groupId>
             <artifactId>api2pdf</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.4</version>
         </dependency>
     </dependencies>
 
