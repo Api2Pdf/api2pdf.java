@@ -1,94 +1,103 @@
 package com.api2pdf.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Api2PdfResponse {
 
-	 private String responseId;
+	@JsonProperty("ResponseId")
+	private String ResponseId;
 
-	    private String error;
+	@JsonProperty("Error")
+	private String Error;
 
-	    private String mbOut;
+	@JsonProperty("MbOut")
+	private String MbOut;
 
-	    private String pdf;
+	@JsonProperty("FileUrl")
+	private String FileUrl;
 
-	    private Boolean success;
+	@JsonProperty("Success")
+	private Boolean Success;
 
-	    private String cost;
+	@JsonProperty("Cost")
+	private String Cost;
 
-	    private String mbIn;
+	@JsonProperty("Seconds")
+	private String Seconds;
 
-	    public String getResponseId ()
-	    {
-	        return responseId;
-	    }
+	public String getResponseId ()
+	{
+		return ResponseId;
+	}
 
-	    public void setResponseId (String responseId)
-	    {
-	        this.responseId = responseId;
-	    }
+	public void setResponseId (String responseId)
+	{
+		this.ResponseId = responseId;
+	}
 
-	    public String getError ()
-	    {
-	        return error;
-	    }
+	public String getError ()
+	{
+		return Error;
+	}
 
-	    public void setError (String error)
-	    {
-	        this.error = error;
-	    }
+	public void setError (String error)
+	{
+		this.Error = error;
+	}
 
-	    public String getMbOut ()
-	    {
-	        return mbOut;
-	    }
+	public String getMbOut ()
+	{
+		return MbOut;
+	}
 
-	    public void setMbOut (String mbOut)
-	    {
-	        this.mbOut = mbOut;
-	    }
+	public void setMbOut (String mbOut)
+	{
+		this.MbOut = mbOut;
+	}
 
-	    public String getPdf ()
-	    {
-	        return pdf;
-	    }
+	public String getFile ()
+	{
+		return FileUrl;
+	}
 
-	    public void setPdf (String pdf)
-	    {
-	        this.pdf = pdf;
-	    }
+	public void setFile (String fileUrl)
+	{
+		this.FileUrl = fileUrl;
+	}
 
-	    public Boolean getSuccess ()
-	    {
-	        return success;
-	    }
+	public Boolean getSuccess ()
+	{
+		return Success;
+	}
 
-	    public void setSuccess (Boolean success)
-	    {
-	        this.success = success;
-	    }
+	public void setSuccess (Boolean success)
+	{
+		this.Success = success;
+	}
 
-	    public String getCost ()
-	    {
-	        return cost;
-	    }
+	public String getCost ()
+	{
+		return Cost;
+	}
 
-	    public void setCost (String cost)
-	    {
-	        this.cost = cost;
-	    }
+	public void setCost (String cost)
+	{
+		this.Cost = cost;
+	}
 
-	    public String getMbIn ()
-	    {
-	        return mbIn;
-	    }
+	public String getSeconds ()
+	{
+		return Seconds;
+	}
 
-	    public void setMbIn (String mbIn)
-	    {
-	        this.mbIn = mbIn;
-	    }
+	public void setSeconds (String seconds)
+	{
+		this.Seconds = seconds;
+	}
 
-	    @Override
-	    public String toString()
-	    {
-	        return "ClassPojo [responseId = "+responseId+", error = "+error+", mbOut = "+mbOut+", pdf = "+pdf+", success = "+success+", cost = "+cost+", mbIn = "+mbIn+"]";
-	    }
+	@Override
+	public String toString()
+	{
+		return "ClassPojo [responseId = "+ResponseId+", error = "+Error+", mbOut = "+MbOut+", pdf = "+FileUrl+", success = "+Success+", cost = "+Cost+", seconds = "+Seconds+"]";
+	}
 }
