@@ -1,7 +1,6 @@
 package com.api2pdf.models;
 
 public class Api2PdfMergeRequestModel extends Api2PdfRequestModelBase {
-
 	private String[] urls;
 
 	public String[] getUrls() {
@@ -11,5 +10,4 @@ public class Api2PdfMergeRequestModel extends Api2PdfRequestModelBase {
 	public void setUrls(String[] urls) {
 		this.urls = urls;
 	}
-
 }

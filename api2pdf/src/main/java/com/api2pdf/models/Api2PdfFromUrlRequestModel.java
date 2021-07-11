@@ -2,7 +2,7 @@ package com.api2pdf.models;
 
 
 
-public class Api2PdfFromUrlRequestModel extends Api2PdfRequestModelBase{
+public class Api2PdfFromUrlRequestModel extends Api2PdfRequestModelBase {
 	private String url;
 
 	public String getUrl() {
@@ -12,6 +12,4 @@ public class Api2PdfFromUrlRequestModel extends Api2PdfRequestModelBase{
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	
 }

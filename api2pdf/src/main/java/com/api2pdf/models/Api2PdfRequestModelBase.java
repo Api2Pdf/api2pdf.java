@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Api2PdfRequestModelBase{
-	private Boolean inlinePdf;
+	private Boolean inline;
 	private String fileName;
 	private Map<String, String> options = new HashMap<String, String>();
 	
 	
-	public Boolean getInlinePdf() {
-		return inlinePdf;
+	public Boolean getInline() {
+		return inline;
 	}
-	public void setInlinePdf(Boolean inlinePdf) {
-		this.inlinePdf = inlinePdf;
+	public void setInline(Boolean inline) {
+		this.inline = inline;
 	}
 	public Map<String, String> getOptions() {
 		return options;
