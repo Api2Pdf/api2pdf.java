@@ -228,7 +228,26 @@ To use the merge endpoint, supply a list of urls to existing PDFs. The engine wi
 **Merge PDFs from array of URLs to existing PDFs (load PDF in browser window (true or false) and specify a file name)****
 
 ```
-String[] urls = { "your-url-to-pdf1.pdf", "your-url-to-pdf2.pdf" };
+String[] urls = { "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf", "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf" };
 Api2PdfResponse response = a2pClient.pdfsharpMerge(urls, true, "test.pdf");
+System.out.println(response.getFile());
+```
+
+**Add PDF bookmarks to an existing PDF**
+
+```
+import com.api2pdf.models.Api2PdfBookmarkItemModel;
+String url = "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf";
+Api2PdfBookmarkItemModel[] bookmarks = new Api2PdfBookmarkItemModel[] { new Api2PdfBookmarkItemModel(0, "Title page") };
+Api2PdfResponse response = a2pClient.pdfsharpAddBookmarks(url, bookmarks, true, "test.pdf");
+System.out.println(response.getFile());
+```
+
+**Add password to existing PDF**
+
+```
+String url = "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf";
+String password = "hello";
+Api2PdfResponse response = a2pClient.pdfsharpAddBookmarks(url, password, true, "test.pdf");
 System.out.println(response.getFile());
 ```
