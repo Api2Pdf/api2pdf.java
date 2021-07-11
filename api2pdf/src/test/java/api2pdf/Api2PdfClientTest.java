@@ -21,15 +21,15 @@ public class Api2PdfClientTest {
 
 	@Test
 	public void testLibreofficeConvert() throws IOException {
-		Api2PdfResponse response = a2pClient.libreofficeConvert("http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc", true,
+		Api2PdfResponse response = a2pClient.libreofficeConvert("https://www.api2pdf.com/wp-content/themes/api2pdf/assets/samples/sample-word-doc.docx", true,
 				"test.pdf");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
 
 	@Test
 	public void testMerge() throws IOException {
-		String[] urls = { "http://www.orimi.com/pdf-test.pdf",
-				"http://www.orimi.com/pdf-test.pdf" };
+		String[] urls = { "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf",
+				"http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf" };
 		Api2PdfResponse response = a2pClient.merge(urls, true, "test.pdf");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
@@ -53,7 +53,7 @@ public class Api2PdfClientTest {
 	
 	@Test
 	public void testWkhtmlToPdfFromUrl() throws IOException {
-		Api2PdfResponse response = a2pClient.wkhtmlToPdfFromUrl("https://www.google.com",
+		Api2PdfResponse response = a2pClient.wkhtmlToPdfFromUrl("https://www.api2pdf.com",
 				true, "test.pdf");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
@@ -63,7 +63,7 @@ public class Api2PdfClientTest {
 		HashMap<String, String> options = new HashMap<String, String>();
 		options.put("orientation", "landscape");
 		options.put("pageSize", "A4");
-		Api2PdfResponse response = a2pClient.wkhtmlToPdfFromUrl("https://www.google.com",
+		Api2PdfResponse response = a2pClient.wkhtmlToPdfFromUrl("https://www.api2pdf.com",
 				true, "test.pdf", options);
 		Assert.assertEquals(response.getSuccess(), true);
 	}
@@ -87,7 +87,7 @@ public class Api2PdfClientTest {
 	
 	@Test
 	public void testHeadlessChromeFromUrl() throws IOException {
-		Api2PdfResponse response = a2pClient.headlessChromeFromUrl("https://www.google.com",
+		Api2PdfResponse response = a2pClient.headlessChromeFromUrl("https://www.api2pdf.com",
 				true, "test.pdf");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
@@ -97,7 +97,7 @@ public class Api2PdfClientTest {
 		HashMap<String, String> options = new HashMap<String, String>();
 		options.put("orientation", "landscape");
 		options.put("pageSize", "A4");
-		Api2PdfResponse response = a2pClient.headlessChromeFromUrl("https://www.google.com",
+		Api2PdfResponse response = a2pClient.headlessChromeFromUrl("https://www.api2pdf.com",
 				true, "test.pdf", options);
 		Assert.assertEquals(response.getSuccess(), true);
 	}
