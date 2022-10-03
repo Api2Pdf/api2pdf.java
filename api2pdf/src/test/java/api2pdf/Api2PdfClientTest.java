@@ -29,14 +29,14 @@ public class Api2PdfClientTest {
 
 	@Test
 	public void testLibreofficeHtmlToDocx() throws IOException {
-		Api2PdfResponse response = a2pClient.libreofficeHtmlToDocx("http://www.api2pdf.com/wp-content/uploads/2021/01/sampleHtml.html", true,
+		Api2PdfResponse response = a2pClient.libreofficeHtmlToDocx("https://www.api2pdf.com/wp-content/uploads/2021/01/sampleHtml.html", true,
 				"test.docx");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
 
 	@Test
 	public void testLibreofficeHtmlToXlsx() throws IOException {
-		Api2PdfResponse response = a2pClient.libreofficeHtmlToXlsx("http://www.api2pdf.com/wp-content/uploads/2021/01/sampleTables.html", true,
+		Api2PdfResponse response = a2pClient.libreofficeHtmlToXlsx("https://www.api2pdf.com/wp-content/uploads/2021/01/sampleTables.html", true,
 				"test.xlsx");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
@@ -50,22 +50,22 @@ public class Api2PdfClientTest {
 
 	@Test
 	public void testLibreofficePdfToHtml() throws IOException {
-		Api2PdfResponse response = a2pClient.libreofficePdfToHtml("http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf", true,
+		Api2PdfResponse response = a2pClient.libreofficePdfToHtml("https://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf", true,
 				"test.html");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
 
 	@Test
 	public void testPdfSharpMerge() throws IOException {
-		String[] urls = { "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf",
-				"http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf" };
+		String[] urls = {"https://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf",
+				"https://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf"};
 		Api2PdfResponse response = a2pClient.pdfsharpMerge(urls, true, "test.pdf");
 		Assert.assertEquals(response.getSuccess(), true);
 	}
 
 	@Test
 	public void testPdfSharpAddBookmark() throws IOException {
-		String url = "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf";
+		String url = "https://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf";
 		Api2PdfBookmarkItemModel[] bookmarks = new Api2PdfBookmarkItemModel[] { new Api2PdfBookmarkItemModel(0, "Title page") };
 		Api2PdfResponse response = a2pClient.pdfsharpAddBookmarks(url, bookmarks, true, "test.pdf");
 		Assert.assertEquals(response.getSuccess(), true);
@@ -73,7 +73,7 @@ public class Api2PdfClientTest {
 
 	@Test
 	public void testPdfSharpAddPassword() throws IOException {
-		String url = "http://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf";
+		String url = "https://www.api2pdf.com/wp-content/uploads/2021/01/1a082b03-2bd6-4703-989d-0443a88e3b0f-4.pdf";
 		String password = "hello";
 		Api2PdfResponse response = a2pClient.pdfsharpAddPassword(url, password, true, "test.pdf");
 		Assert.assertEquals(response.getSuccess(), true);
@@ -88,7 +88,7 @@ public class Api2PdfClientTest {
 
 	@Test
 	public void testWkhtmlHtmlToPdfWithOptions() throws IOException {
-		HashMap<String, String> options = new HashMap<String, String>();
+		HashMap<String, String> options = new HashMap<>();
 		options.put("orientation", "landscape");
 		options.put("pageSize", "A4");
 		Api2PdfResponse response = a2pClient.wkhtmlHtmlToPdf("<p>test</p>",
@@ -105,7 +105,7 @@ public class Api2PdfClientTest {
 	
 	@Test
 	public void testWkhtmlUrlToPdfWithOptions() throws IOException {
-		HashMap<String, String> options = new HashMap<String, String>();
+		HashMap<String, String> options = new HashMap<>();
 		options.put("orientation", "landscape");
 		options.put("pageSize", "A4");
 		Api2PdfResponse response = a2pClient.wkhtmlUrlToPdf("https://www.api2pdf.com",
@@ -122,7 +122,7 @@ public class Api2PdfClientTest {
 	
 	@Test
 	public void testChromeHtmlToPdfWithOptions() throws IOException {
-		HashMap<String, String> options = new HashMap<String, String>();
+		HashMap<String, String> options = new HashMap<>();
 		options.put("landscape", "true");
 		Api2PdfResponse response = a2pClient.chromeHtmlToPdf("<p>test</p>",
 				true, "test.pdf", options);
@@ -138,7 +138,7 @@ public class Api2PdfClientTest {
 	
 	@Test
 	public void testChromeUrlToPdfWithOptions() throws IOException {
-		HashMap<String, String> options = new HashMap<String, String>();
+		HashMap<String, String> options = new HashMap<>();
 		options.put("orientation", "landscape");
 		Api2PdfResponse response = a2pClient.chromeUrlToPdf("https://www.api2pdf.com",
 				true, "test.pdf", options);
@@ -154,7 +154,7 @@ public class Api2PdfClientTest {
 	
 	@Test
 	public void testChromeHtmlToImageWithOptions() throws IOException {
-		HashMap<String, String> options = new HashMap<String, String>();
+		HashMap<String, String> options = new HashMap<>();
 		options.put("fullPage", "false");
 		Api2PdfResponse response = a2pClient.chromeHtmlToPdf("<p>test</p>",
 				true, "test.png", options);
@@ -170,7 +170,7 @@ public class Api2PdfClientTest {
 	
 	@Test
 	public void testChromeUrlToImageWithOptions() throws IOException {
-		HashMap<String, String> options = new HashMap<String, String>();
+		HashMap<String, String> options = new HashMap<>();
 		options.put("fullPage", "false");
 		Api2PdfResponse response = a2pClient.chromeUrlToImage("https://www.api2pdf.com",
 				true, "test.png", options);
