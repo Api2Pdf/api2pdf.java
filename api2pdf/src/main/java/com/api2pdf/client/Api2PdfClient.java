@@ -22,8 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Api2PdfClient {
 	private static final String API2PDF_BASE_URL = "https://v2.api2pdf.com";
-	private String _baseUrl;
-	private String _apiKey;
+	private final String _baseUrl;
+	private final String _apiKey;
 
 	public Api2PdfClient(String apiKey) {
 		this._apiKey = apiKey;
@@ -65,7 +65,7 @@ public class Api2PdfClient {
 
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String inputLine;
-		StringBuffer response = new StringBuffer();
+		StringBuilder response = new StringBuilder();
 
 		while ((inputLine = in.readLine()) != null) {
 			response.append(inputLine);
@@ -78,13 +78,16 @@ public class Api2PdfClient {
 		System.out.println(jsonResponse);
 
 		ObjectMapper objectMapper = new ObjectMapper();
-		Api2PdfResponse api2pdfResponse = objectMapper.readValue(jsonResponse, Api2PdfResponse.class);
-		return api2pdfResponse;
+		return objectMapper.readValue(jsonResponse, Api2PdfResponse.class);
 	}
 
 	public Api2PdfResponse libreofficeAnyToPdf(String url, boolean inline, String fileName)
 			throws IOException {
 		HttpURLConnection con = getConnection(this._baseUrl + "/libreoffice/any-to-pdf");
+		return getApi2PdfResponse(url, inline, fileName, con);
+	}
+
+	private Api2PdfResponse getApi2PdfResponse(String url, boolean inline, String fileName, HttpURLConnection con) throws IOException {
 		Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
 		model.setUrl(url);
 		model.setInline(inline);
@@ -97,49 +100,25 @@ public class Api2PdfClient {
 	public Api2PdfResponse libreofficeHtmlToDocx(String url, boolean inline, String fileName)
 			throws IOException {
 		HttpURLConnection con = getConnection(this._baseUrl + "/libreoffice/html-to-docx");
-		Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
-		model.setUrl(url);
-		model.setInline(inline);
-		model.setFileName(fileName);
-		ObjectMapper objectMapper = new ObjectMapper();
-		String payload = objectMapper.writeValueAsString(model);
-		return makeRequest(payload, con);
+		return getApi2PdfResponse(url, inline, fileName, con);
 	}
 
 	public Api2PdfResponse libreofficeHtmlToXlsx(String url, boolean inline, String fileName)
 			throws IOException {
 		HttpURLConnection con = getConnection(this._baseUrl + "/libreoffice/html-to-xlsx");
-		Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
-		model.setUrl(url);
-		model.setInline(inline);
-		model.setFileName(fileName);
-		ObjectMapper objectMapper = new ObjectMapper();
-		String payload = objectMapper.writeValueAsString(model);
-		return makeRequest(payload, con);
+		return getApi2PdfResponse(url, inline, fileName, con);
 	}
 
 	public Api2PdfResponse libreofficeThumbnail(String url, boolean inline, String fileName)
 			throws IOException {
 		HttpURLConnection con = getConnection(this._baseUrl + "/libreoffice/thumbnail");
-		Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
-		model.setUrl(url);
-		model.setInline(inline);
-		model.setFileName(fileName);
-		ObjectMapper objectMapper = new ObjectMapper();
-		String payload = objectMapper.writeValueAsString(model);
-		return makeRequest(payload, con);
+		return getApi2PdfResponse(url, inline, fileName, con);
 	}
 
 	public Api2PdfResponse libreofficePdfToHtml(String url, boolean inline, String fileName)
 			throws IOException {
 		HttpURLConnection con = getConnection(this._baseUrl + "/libreoffice/pdf-to-html");
-		Api2PdfFromUrlRequestModel model = new Api2PdfFromUrlRequestModel();
-		model.setUrl(url);
-		model.setInline(inline);
-		model.setFileName(fileName);
-		ObjectMapper objectMapper = new ObjectMapper();
-		String payload = objectMapper.writeValueAsString(model);
-		return makeRequest(payload, con);
+		return getApi2PdfResponse(url, inline, fileName, con);
 	}
 
 	public Api2PdfResponse pdfsharpMerge(String[] pdfUrls, boolean inline, String fileName) throws IOException {
